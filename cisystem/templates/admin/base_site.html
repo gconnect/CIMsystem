@@ -1,0 +1,33 @@
+{% extends 'admin/base.html' %}
+
+{% block title %} {{title}} | Civil Registration System Login{% endblock %}
+
+{% block extrastyle %}
+<style>
+    #header{
+    background-color: #058BCC;
+    }
+    #branding h1{
+       color: white;
+    }
+
+    .button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #058bcc;
+    color: #fff;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    font-size: 16px;
+    background: #058bcc;
+
+div.breadcrumbs {
+    background: #18a5ea;
+}
+
+
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1>Civil Registration System</h1>
+{% endblock%}
