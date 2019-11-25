@@ -6,8 +6,7 @@ from django.urls import reverse
 from django.views import generic
 from django.http import HttpResponse, JsonResponse
 # Create your views here.
-from rest_framework.views import APIView
-from rest_framework.response import Response
+
 from .models import Birth, Death
 
 
@@ -79,6 +78,6 @@ def chart_data(request):
             'data': list(map(lambda row: {'name': port_display_name[row['embarked']], 'y': row['total']}, dataset))
         }]
     }
-
     return JsonResponse(chart)
+
 
