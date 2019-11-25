@@ -1,0 +1,31 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+<!-- Override extrahead to add Chart.js -->
+{% block extrahead %}
+{{ block.super }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.src.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $.ajax({
+      url: $("#container").attr("data-url"),
+      dataType: 'json',
+      success: function (data) {
+        Highcharts.chart("container", data);
+      }
+    });
+  </script>
+{% endblock %}
+
+{% block content %}
+
+<!--<h1>Custom message!</h1>-->
+
+<!-- Render the rest of the ChangeList view by calling block.super -->
+<!-- Render our chart -->
+
+
+<!-- Render the rest of the ChangeList view -->
+{{ block.super }}
+{% endblock %}

@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'bdregistration/uploads')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE ='whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'cisystem/static'),]
+
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'home'
+# LOGIN_URL = '/cisystem/user_profile/'
