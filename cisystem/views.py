@@ -1,7 +1,10 @@
+from pyexpat.errors import messages
+
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Count
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import generic
 from django.http import HttpResponse, JsonResponse
@@ -24,6 +27,9 @@ def login(request):
 
 def contact(request):
    return render(request, 'cisystem/contact.html')
+
+def user_error_login(request):
+   return render(request, 'cisystem/user_error_login.html')
 
 class userProfileView(generic.DetailView):
     model = Birth
@@ -52,11 +58,16 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 def user_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-    obj = Birth.objects.get(username=username, password=password)
-    return render(request, 'cisystem/user_profile.html', {'obj': obj})
+    try:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            obj = Birth.objects.get(username=username, password=password)
+            return render(request, 'cisystem/user_profile.html', {'obj': obj})
+    except:
+        return render(request, 'cisystem/user_error_login.html')
+
+        # return render(request, 'cisystem/user_error_login.html')
+
 
 
 def chart_data(request):

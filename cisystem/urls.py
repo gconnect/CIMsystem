@@ -14,6 +14,7 @@ urlpatterns = [
     path('chart_data/', views.chart_data, name='chart-data'),
     path('birth_certificate/', views.birthCertifcateView,  name='birth_certificate'),
     path('user_login/', views.user_login,  name='user_login'),
+    path('user_error_login/', views.user_error_login,  name='user_error_login'),
     path('<int:pk>/', views.userProfileView.as_view(), name='user_profile'),
     # path(r'^logout/$', views.user_logout, name='logout'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
