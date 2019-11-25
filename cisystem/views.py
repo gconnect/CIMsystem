@@ -59,24 +59,6 @@ def user_login(request):
     obj = Birth.objects.get(username=username, password=password)
     return render(request, 'cisystem/user_profile.html', {'obj': obj})
 
-class ChartData(APIView):
-    authentication_classes = []
-    permission_classes = []
-
-    def get(self, request, format=None):
-        qs_count = Birth.objects.all().count()
-        labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
-        default_items = [qs_count, 23, 2, 3, 12, 2]
-        data = {
-                "labels": labels,
-                "default": default_items,
-        }
-        return Response(data)
-
-
-
-def json_example(request):
-    return render(request, 'json_example.html')
 
 def chart_data(request):
     dataset = Birth.objects \
