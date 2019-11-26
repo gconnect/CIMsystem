@@ -1,1 +1,14 @@
-<h3>Sorry error occured</h3>
+{% extends 'cisystem/header.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container error-page">
+    <div class="alert alert-danger" role="alert">
+        <h4>Sorry we can't access your profile at this time. Please contact your registrar for login access</h4>
+
+    </div>
+    <button class="btn btn-primary"><a class="try-again" href="{% url 'cisystem:login'%}">Try Again</a></button>
+</div>
+
+{% endblock %}
+

@@ -56,3 +56,12 @@ margin: 24px;
 .my-card{
     margin-bottom: 24px;
 }
+
+.try-again {
+   color: inherit;
+   text-decoration: inherit;
+}
+
+.error-page{
+margin-top: 24px;
+}

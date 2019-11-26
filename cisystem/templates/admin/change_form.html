@@ -17,7 +17,7 @@
 {{ block.super }}
 <div class="submit-row">
     <button type="button"  onclick="print_certificate()" class="print-button">Print Certificate</button>
-    <button type="button" class="print-button"><a href="{% url 'cisystem:birth_certificate' birth.id %}">Print Certificate</a></button>
+    <button type="button" class="print-button"><a href="{% url 'cisystem:birth_certificate' %}">Print Certificate</a></button>
 </div>
 {% endblock %}
 

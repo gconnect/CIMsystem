@@ -64,7 +64,7 @@ def user_login(request):
             return render(request, 'cisystem/user_profile.html', {'obj': obj})
     except:
         # messages.error(request, 'Wrong Username or password')
-        return render(request, 'cisystem/login.html')
+        return render(request, 'cisystem/user_error_login.html')
 
 
 def get_certificate(request, birth_id):
@@ -72,10 +72,8 @@ def get_certificate(request, birth_id):
     return HttpResponseRedirect(reverse('cisystem:birth_certificate', args=(obj.birth_id,)))
 
 
-class get_birth_certificateView(generic.DetailView):
-    model = Birth
-    template_name = 'cisystem/birth_certificate.html'
-
+def get_birth_certificateView(request):
+    return render(request, 'cisystem/birth_certificate.html')
 
 class get_eligible_listView(generic.ListView):
     template_name = 'cisystem/eligible_list.html'
