@@ -18,7 +18,7 @@ class BirthAdmin(admin.ModelAdmin):
     search_fields = ['age']
     readonly_fields = ['entry_no', 'age', 'certificate_number', 'username', 'password', 'is_eligible']
     change_form_template = ["admin/change_form.html", "admin/change_list.html"]
-    # js = ('admin/js/change_form.js')
+    # js = ('admin/js/app.js')
 
     def changelist_view(self, request, extra_context=None):
         # Aggregate new subscribers per day

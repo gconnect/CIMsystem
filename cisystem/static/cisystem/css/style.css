@@ -40,7 +40,11 @@ color : #B6B6B6;
     width: 100%;
 }
 
-
+.eligible_title{
+    margin-top : 24px;
+    margin-bottom : 24px;
+    color: blue;
+}
 
 .welcome, .welcome-message{
 text-align : center;

@@ -1,0 +1,56 @@
+{% extends 'cisystem/header.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Overview of Vital Statistics</th>
+        </tr>
+        </thead>
+    </table>
+    <div class="row">
+        {% for stat in statistics %}
+            <div class="col-sm">
+                <h2>{{stat.is_eligible}}</h2>
+                <p>Eligible Voters</p>
+            </div>
+        {% endfor %}
+        <div class="col-sm">
+            <h2>1000,000</h2>
+            <p>Total Births</p>
+        </div>
+        <div class="col-sm">
+            <h2>5,000</h2>
+            <p>Aged 70+</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">5000</h5>
+                    <p class="card-text">Uder age</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">5000</h5>
+                    <p class="card-text">Death</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">5000</h5>
+                    <p class="card-text">Major Causes of Death</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

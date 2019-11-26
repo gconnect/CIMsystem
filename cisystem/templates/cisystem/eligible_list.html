@@ -1,0 +1,33 @@
+{% extends 'cisystem/header.html' %}
+{% load static %}
+
+{% block body %}
+{% if eligible_list %}
+<div class="container">
+    <div class="eligible_title"><h4>Eligible List</h4></div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Fullname</th>
+      <th scope="col">Age</th>
+      <th scope="col">Date of Birth</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for eligible in eligible_list %}
+    <tr>
+      <th scope="row">{{eligible.id}}</th>
+      <td>{{eligible.fullname}}</td>
+      <td>{{eligible.age}}</td>
+      <td>{{eligible.date_of_birth}}</td>
+    </tr>
+  </tbody>
+    {% endfor %}
+
+</table>
+ </div>
+{% else %}
+<p>No member of the population is eligible</p>
+{% endif %}
+{% endblock %}
