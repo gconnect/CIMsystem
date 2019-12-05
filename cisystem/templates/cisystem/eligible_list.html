@@ -4,12 +4,13 @@
 {% block body %}
 {% if eligible_list %}
 <div class="container">
-    <div class="eligible_title"><h4>Eligible List</h4></div>
+    <div class="eligible_title"><h4 class="title">Eligible List</h4></div>
 <table class="table">
-  <thead class="thead-dark">
+  <thead class="table-header">
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Fullname</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Other name</th>
       <th scope="col">Age</th>
       <th scope="col">Date of Birth</th>
     </tr>
@@ -18,8 +19,9 @@
       {% for eligible in eligible_list %}
     <tr>
       <th scope="row">{{eligible.id}}</th>
-      <td>{{eligible.fullname}}</td>
-      <td>{{eligible.age}}</td>
+      <td>{{eligible.surname_of_child}}</td>
+      <td>{{eligible.other_name_of_child}}</td>
+      <td>{{eligible.child_age}}</td>
       <td>{{eligible.date_of_birth}}</td>
     </tr>
   </tbody>

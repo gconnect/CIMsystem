@@ -14,6 +14,8 @@ import os
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.core.mail.backends import smtp
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +85,7 @@ WSGI_APPLICATION = 'bdregistration.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bdrsystem_db',
+        'NAME': 'cimsystem_db',
         'USER': 'postgres',
         'PASSWORD': 'quickerpay',
         'HOST': 'localhost',
@@ -140,3 +143,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'cisystem/static'),]
 # LOGIN_REDIRECT_URL = 'home'
 # LOGOUT_REDIRECT_URL = 'home'
 # LOGIN_URL = '/cisystem/user_profile/'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sheistechy@gmail.com'
+EMAIL_HOST_PASSWORD = 'ilovetech'

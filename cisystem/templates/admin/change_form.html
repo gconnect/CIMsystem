@@ -10,22 +10,24 @@
     padding: 8px;
     border-radius: 4px;
 }
+
 </style>
 {% endblock %}
 
 {% block submit_buttons_bottom %}
 {{ block.super }}
 <div class="submit-row">
-    <button type="button"  onclick="print_certificate()" class="print-button">Print Certificate</button>
-    <button type="button" class="print-button"><a href="{% url 'cisystem:birth_certificate' %}">Print Certificate</a></button>
+<!--    <button type="button" onclick="print_certificate()" class="print-button">Print Certificate</button>-->
+    <button type="button" class="print-button"><a href="{% url 'cisystem:birth_certificate' %}">Print Certificate</a>
+    </button>
 </div>
 {% endblock %}
 
 {% block admin_change_form_document_ready %}
-    <script type="text/javascript"
-            src="{% static 'admin/js/change_form.js' %}"
-            {% if adminform and add %}
-                data-model-name="{{ opts.model_name }}"
-            {% endif %}>
-    </script>
+<script type="text/javascript"
+        src="{% static 'admin/js/change_form.js' %}"
+        {% if adminform and add %}
+        data-model-name="{{ opts.model_name }}"
+        {% endif %}>
+</script>
 {% endblock %}

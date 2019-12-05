@@ -19,13 +19,43 @@
 .module h2, .module caption, .inline-group h2 {
     font-size: 16px;
     background: #058bcc;
-
+    width : 600px;
+}
 div.breadcrumbs {
     background: #18a5ea;
 }
+
 </style>
 {% endblock %}
 
 {% block branding %}
-<h1>Civil Registration System</h1>
+<h1>Civil Information Management System</h1>
 {% endblock%}
+
+{% block content_title %}{% if title %}<h1>Civil Information Management System</h1>{% endif %}
+<div id="content-main">
+    <div class="app-{{ app.app_label }} module">
+        <table>
+            <caption>
+                <a href="{{ app.app_url }}" class="section" title="my title">Vital Statistics</a>
+            </caption>
+            <tbody>
+            <tr class="model-birth">
+                <th scope="row">
+                    <a href="{% url 'cisystem:eligible_list' %}">Eligible List</a>
+                </th>
+            </tr>
+            <tr class="model-birth">
+                <th scope="row">
+                    <a href="{% url 'cisystem:statistics' %}">Vital Statistics</a>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+
+

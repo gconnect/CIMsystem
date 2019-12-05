@@ -1,56 +1,143 @@
 {% extends 'cisystem/header.html' %}
 {% load static %}
+<!-- Override extrahead to add Chart.js -->
 {% block body %}
-<div class="container">
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">Overview of Vital Statistics</th>
-        </tr>
-        </thead>
-    </table>
-    <div class="row">
-        {% for stat in statistics %}
-            <div class="col-sm">
-                <h2>{{stat.is_eligible}}</h2>
-                <p>Eligible Voters</p>
-            </div>
-        {% endfor %}
-        <div class="col-sm">
-            <h2>1000,000</h2>
-            <p>Total Births</p>
-        </div>
-        <div class="col-sm">
-            <h2>5,000</h2>
-            <p>Aged 70+</p>
-        </div>
-    </div>
+{% block jquery %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"/>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="{% static 'cisystem/css/style.css' %}" type="text/css"/>
 
-    <div class="row">
-        <div class="col-sm">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">5000</h5>
-                    <p class="card-text">Uder age</p>
-                </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
+<script>
+var endpoint = '/api/chart/data/'
+var defaultData = []
+var labels = [];
+$.ajax({
+    method: "GET",
+    url: endpoint,
+    success: function(data){
+        labels = data.labels
+        defaultData = data.default
+        setChart()
+    },
+    error: function(error_data){
+        console.log("error")
+        console.log(error_data)
+    }
+})
+function setChart(){
+    var ctx = document.getElementById("myChart");
+    var ctx2 = document.getElementById("myChart2").getContext('2d');
+    var myChart = new Chart(ctx2, {
+    type: 'polarArea',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Vital Statistics',
+            data: defaultData,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        },
+        legend:{
+            display : true,
+            position :'right',
+        }
+    }
+});
+
+// For a pie chart
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Vital Statistics',
+            data: defaultData,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        },
+        legend:{
+            display : true,
+            position :'right',
+        }
+    }
+});
+}
+// var ctx = document.getElementById("myChart");
+{% endblock %}
+
+</script>
+
+{% block content %}
+<div class="container">
+   <h3 class="heading">Overview of Vital Statistics</h3>
+    <div class='row' url-endpoint='{% url "cisystem:api_data" %}'>
+            <div class="col-sm">
+                <canvas id="myChart" width="400" height="400"></canvas>
             </div>
-        </div>
-        <div class="col-sm">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">5000</h5>
-                    <p class="card-text">Death</p>
-                </div>
+            <div class='col-sm'>
+                <canvas id="myChart2" width="400" height="400"></canvas>
             </div>
-        </div>
-        <div class="col-sm">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">5000</h5>
-                    <p class="card-text">Major Causes of Death</p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
+{% endblock %}
+{% include 'cisystem/footer.html' %}
 {% endblock %}

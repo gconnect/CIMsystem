@@ -15,17 +15,18 @@
         <div class="col-sm-6"></div>
         <div class="col-sm-4">
             <p class="reg-id">Registration id:</p>
+
         </div>
         <div class="col-sm-2">
             <p class="reg-id">{{obj.certificate_number}}</p>
 
         </div>
     </div>
-    <h3 class="center"><u>CERTIFICATE OF BIRTH</u></h3>
+    <h3 class="center"><u>CERTIFICATE OF DEATH</u></h3>
     <h5 class="center">Issued under the birth and deaths, etc (Compulsory Registration) Decree 69 of 1992</h5>
     <div class="row">
         <div class="col-sm-4">
-            <label class="left"><b>Registration Center</b></label>
+            <label class="left">Registration Center</label>
         </div>
         <div class="col-sm-8">
             <p class="left">{{obj.registration_center}}</p>
@@ -35,7 +36,7 @@
 
     <div class="row">
         <div class="col-sm-4">
-            <label class="left"><b>Town/Village</b></label>
+            <label class="left">Town/Village</label>
         </div>
         <div class="col-sm-8">
             <p class="left">{{obj.town_or_village_of_registration}}</p>
@@ -44,7 +45,7 @@
     </div>
     <div class="row">
         <div class="col-sm-4">
-            <label class="left"><b>L.G.A</b></label>
+            <label class="left">L.G.A</label>
         </div>
         <div class="col-sm-8">
             <p class="left">{{obj.LGA_of_registration}}</p>
@@ -53,7 +54,7 @@
     </div>
     <div class="row">
         <div class="col-sm-4">
-            <label class="left"><b>State</b></label>
+            <label class="left">State</label>
         </div>
         <div class="col-sm-4">
             <p class="left">{{obj.state_of_registration}}</p>
@@ -62,12 +63,12 @@
         <div class="col-sm-2">
             <p class="right">{{obj.registered_date.year}}</p>
             <hr class="line" size="6" width="50%" color="black">
-            <p class="right"><b>Year</b></p>
+            <p class="right">Year</p>
         </div>
         <div class="col-sm-2">
             <p class="right">{{obj.entry_no}}</p>
             <hr class="line2" size="6" width="50%" color="black">
-            <p class="right"><b>Entry No.</b></p>
+            <p class="right">Entry No.</p>
         </div>
     </div>
     <h5 class="center">This is to certify that the birth record of which are recorded herein, have been registered
@@ -76,17 +77,17 @@
         <div class="col-sm-2 top ">
             <p class="right">{{obj.registered_date.day}}</p>
             <hr class="line" size="6" width="50%" color="black">
-            <p class="right"><b>Day</b></p>
+            <p class="right">Day</p>
         </div>
         <div class="col-sm-2 top">
             <p class="right">{{obj.registered_date.month}}</p>
             <hr class="line" size="6" width="50%" color="black">
-            <p class="right"><b>Month</b></p>
+            <p class="right">Month</p>
         </div>
         <div class="col-sm-2 top">
             <p class="right">{{obj.registered_date.year}}</p>
             <hr class="line2" size="6" width="50%" color="black">
-            <p class="right"><b>Year</b></p>
+            <p class="right">Year</p>
         </div>
         <div class="col-sm-6 top">
             <h5 class="right">at this registration center</h5>
@@ -95,82 +96,73 @@
 
     <div class="row">
         <div class="col-sm-2 top ">
-            <p><b>1. Full Name</b></p>
+            <p>1. Full Name</p>
         </div>
         <div class="col-sm-10 top">
-            <p class="left2">{{obj.surname_of_child}}  {{obj.other_name_of_child}}</p>
+            <p class="left2">{{obj.surname_of_deceased}} {{obj.other_name_of_deceased}}</p>
             <hr size="6" width="100%" color="black">
-            <label class="right"><b>(Surname first)</b></label>
-            <label class="right"><b>(in block letters)</b></label>
+            <label class="right">(Surname first)</label>
+            <label class="right">(in block letters)</label>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-2 top ">
-            <p><b>2. Sex </b></p>
+            <p>2. Sex </p>
         </div>
         <div class="col-sm-2 top ">
             <p class="left2">{{obj.sex}}</p>
             <hr class="line" size="6" width="50%" color="black">
         </div>
         <div class="col-sm-2 top">
-            <p><b>3. Date of birth: </b></p>
+            <p>3. Date of Death: </p>
         </div>
         <div class="col-sm-2 top">
-            <p class="left2">{{obj.date_of_birth.day}}</p>
+            <p class="left2">{{obj.date_of_death.day}}</p>
             <hr class="line2" size="6" width="50%" color="black">
-            <p><b>Day</b></p>
+            <p>Day</p>
         </div>
         <div class="col-sm-2 top">
-            <p class="left2">{{obj.date_of_birth.month}}</p>
+            <p class="left2">{{obj.date_of_death.month}}</p>
             <hr class="line2" size="6" width="50%" color="black">
-            <p><b>Month</b></p>
+            <p>Month</p>
         </div>
         <div class="col-sm-2 top">
-            <p class="left2">{{obj.date_of_birth.year}}</p>
+            <p class="left2">{{obj.date_of_death.year}}</p>
             <hr class="line2" size="6" width="50%" color="black">
-            <p><b>Year</b></p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2 top ">
-            <p><b>4. Place of Birth:</b></p>
-        </div>
-        <div class="col-sm-8 top">
-            <p class="left2">{{obj.place_of_birth}}</p>
-            <hr size="6" width="100%" color="black">
-        </div>
-        <div class="col-sm-2 top ">
-            <p><b>Town/Village</b></p>
+            <p>Year</p>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-4 top ">
-            <p><b>5. Full name of Father:</b></p>
+            <p>4. Age at Death:</p>
         </div>
         <div class="col-sm-8 top">
-            <p class="left2">{{obj.surname_of_father}} {{obj.other_name_of_father}}</p>
+            <p class="left2">{{obj.age_at_death}}</p>
             <hr size="6" width="100%" color="black">
-            <label class="right"><b>(Surname first)</b></label>
-            <label class="right"><b>(in block letters)</b></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 top ">
+            <p>5. Place of Death:</p>
+        </div>
+        <div class="col-sm-8 top">
+            <p class="left2">{{obj.place_of_death}}</p>
+            <hr size="6" width="100%" color="black">
         </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-4 top ">
-            <p><b>6. Full name of Mother:</b></p>
-        </div>
-        <div class="col-sm-8 top">
-            <p class="left2">{{obj.surname_of_mother}}  {{obj.other_name_of_mother}}</p>
+        <div class="col-sm-12 top ">
+            <p>6. Full Address of usual Place of Residence of Deceased:</p>
+            <p class="left2">{{obj.residence_of_deceased}}</p>
             <hr size="6" width="100%" color="black">
-            <label class="right"><b>(Surname first)</b></label>
-            <label class="right"><b>(in block letters)</b></label>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-2 top ">
-            <p><b>Place of Issue:</b></p>
+            <p>Place of Issue:</p>
         </div>
         <div class="col-sm-4 top">
             <p class="left2">{{obj.place_of_issue}}</p>
@@ -179,22 +171,22 @@
         <div class="col-sm-4 top">
             <p class="left2">{{obj.name_of_registrar}}</p>
             <hr size="6" width="100%" color="black">
-            <p class="left2"><b>Name of Registrar</b></p>
+            <p class="left2">Name of Registrar</p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-2 top ">
-            <p><b>Date:</b></p>
+            <p>Date:</p>
         </div>
         <div class="col-sm-4 top">
             <p class="left2">{{obj.registered_date}}</p>
             <hr size="6" width="100%" color="black">
         </div>
-        <div class="col-sm-4 top">
+        <div class="col-sm-4">
             <br>
             <hr size="6" width="100%" color="black">
-            <p class="left2"><b>Signature of Registrar</b></p>
+            <p class="left2">Signature of Registrar</p>
         </div>
     </div>
 </div>
