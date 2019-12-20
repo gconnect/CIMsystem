@@ -108,8 +108,8 @@ class Birth(models.Model):
     phone_of_informant = models.CharField(max_length=200, default=None, blank=True)
     email_of_informant = models.CharField(max_length=200, default=None, blank=True)
 
-    username = models.CharField(max_length=200, default=None, blank=True, null=True, unique=True)
-    password = models.CharField(max_length=200, default=None, blank=True, null=True)
+    username = models.CharField(max_length=200, unique=True)
+    password = models.CharField(max_length=200)
     registered_late = models.BooleanField(default=False)
     id_card = models.FileField(upload_to='uploads', default=None, blank=True, null=True)
     amount_paid = models.IntegerField(default=None, blank=True, null=True)
@@ -211,8 +211,8 @@ class Death(models.Model):
     proof_of_death = models.FileField(upload_to='uploads', default=None, blank=True, null=True)
     certificate_required = models.BooleanField(default=False)
     amount_paid = models.IntegerField()
-    username = models.CharField(max_length=200, default=None, blank=True, null=True, unique=True)
-    password = models.CharField(max_length=200, default=None, blank=True, null=True)
+    username = models.CharField(max_length=200, unique=True)
+    password = models.CharField(max_length=200)
     registered_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -230,8 +230,7 @@ def death_entry_no(sender, instance, **kwargs):
     return instance.entry_no
 models.signals.pre_save.connect(set_entry_no, sender=Death)
 
-
-def set_username(sender, instance, **kwargs):
+def set_death_username(sender, instance, **kwargs):
     if not instance.username:
         username = instance.surname_of_deceased.replace(" ", "").lower()
         counter = 1
@@ -239,14 +238,10 @@ def set_username(sender, instance, **kwargs):
             username = instance.surname_of_deceased + str(counter)
             counter += 1
         instance.username = username
+models.signals.pre_save.connect(set_death_username, sender=Death)
 
 
-models.signals.pre_save.connect(set_username, sender=Death)
-
-
-def random_password(sender, instance, **kwargs):
+def random_death_password(sender, instance, **kwargs):
     if not instance.password:
         instance.password = uuid.uuid4().hex[:8]
-
-
-models.signals.pre_save.connect(random_password, sender=Death)
+models.signals.pre_save.connect(random_death_password, sender=Death)
