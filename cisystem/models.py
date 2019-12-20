@@ -15,7 +15,7 @@ class Birth(models.Model):
     town_or_village_of_registration = models.CharField(max_length=200)
     LGA_of_registration = models.CharField(max_length=200)
     state_of_registration = models.CharField(max_length=200)
-    entry_no = models.IntegerField()
+    entry_no = models.IntegerField(default=None,blank=True, null=True)
     surname_of_child = models.CharField(max_length=200)
     other_name_of_child = models.CharField(max_length=200)
 
@@ -113,11 +113,12 @@ class Birth(models.Model):
     registered_late = models.BooleanField(default=False)
     id_card = models.FileField(upload_to='uploads', default=None, blank=True, null=True)
     amount_paid = models.IntegerField(default=None, blank=True, null=True)
-    registered_date = models.DateTimeField('registered date')
+    registered_date = models.DateTimeField(auto_now=True)
     child_age = models.IntegerField(default=None, blank=True, null=True)
     place_of_issue = models.CharField(max_length=200,default=None, blank=False, null=False)
     name_of_registrar = models.CharField(max_length=200, default=None, blank=False, null=False)
     is_eligible = models.BooleanField(default=False)
+    is_dead = models.BooleanField(default=False)
 
     def __str__(self):
         return self.surname_of_child
@@ -210,7 +211,9 @@ class Death(models.Model):
     proof_of_death = models.FileField(upload_to='uploads', default=None, blank=True, null=True)
     certificate_required = models.BooleanField(default=False)
     amount_paid = models.IntegerField()
-    registered_date = models.DateTimeField('registered date')
+    username = models.CharField(max_length=200, default=None, blank=True, null=True, unique=True)
+    password = models.CharField(max_length=200, default=None, blank=True, null=True)
+    registered_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.surname_of_deceased
@@ -227,3 +230,23 @@ def death_entry_no(sender, instance, **kwargs):
     return instance.entry_no
 models.signals.pre_save.connect(set_entry_no, sender=Death)
 
+
+def set_username(sender, instance, **kwargs):
+    if not instance.username:
+        username = instance.surname_of_deceased.replace(" ", "").lower()
+        counter = 1
+        while Death.objects.filter(username=username):
+            username = instance.surname_of_deceased + str(counter)
+            counter += 1
+        instance.username = username
+
+
+models.signals.pre_save.connect(set_username, sender=Death)
+
+
+def random_password(sender, instance, **kwargs):
+    if not instance.password:
+        instance.password = uuid.uuid4().hex[:8]
+
+
+models.signals.pre_save.connect(random_password, sender=Death)

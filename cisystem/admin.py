@@ -25,22 +25,6 @@ class BirthAdmin(admin.ModelAdmin):
     change_form_template = ["admin/change_form.html", "admin/change_list.html"]
     # js = ('admin/js/app.js')
 
-    def changelist_view(self, request, extra_context=None):
-        # Aggregate new subscribers per day
-        chart_data = (
-            Birth.objects.annotate(date=TruncDay("registered_date"))
-                .values("date")
-                .annotate(y=Count("id"))
-                .order_by("-date")
-        )
-
-        # Serialize and attach the chart data to the template context
-        as_json = json.dumps(list(chart_data), cls=DjangoJSONEncoder)
-        extra_context = extra_context or {"chart_data": as_json}
-
-        # Call the superclass changelist_view to render the page
-        return super().changelist_view(request, extra_context=extra_context)
-
 
     def get_urls(self):
         urls = super().get_urls()
@@ -75,7 +59,7 @@ class DeathAdmin(admin.ModelAdmin):
     list_filter = ['registered_date']
     # THis adds search to the admin
     search_fields = ['surname_of_deceased']
-    readonly_fields = ['entry_no', 'certificate_number']
+    readonly_fields = ['entry_no', 'certificate_number', 'username', 'password']
 admin.site.register(Death, DeathAdmin)
 
 # admin.site.site_header = 'Civil Registration System'

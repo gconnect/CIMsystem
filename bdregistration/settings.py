@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'bdregistration.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cimsystem_db',
+        'NAME': 'crmsystem_db',
         'USER': 'postgres',
         'PASSWORD': 'quickerpay',
         'HOST': 'localhost',

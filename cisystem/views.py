@@ -58,14 +58,22 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 def user_login(request):
+    type = request.POST.get('type')
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+
     try:
-            username = request.POST.get('username')
-            password = request.POST.get('password')
+        if type == 'birth':
             obj = Birth.objects.get(username=username, password=password)
-            return render(request, 'cisystem/birth_certificate.html', {'obj': obj})
+            context = {'obj': obj}
+            return render(request, 'cisystem/birth_certificate.html', context)
+
+        else:
+            death_obj = Death.objects.get(username=username, password=password)
+            return render(request, 'cisystem/death_certificate.html', {'death_obj': death_obj})
     except:
-        # messages.error(request, 'Wrong Username or password')
         return render(request, 'cisystem/user_error_login.html')
+
 
 class get_eligible_listView(generic.ListView):
     template_name = 'cisystem/eligible_list.html'

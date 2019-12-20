@@ -8,10 +8,21 @@
 {% endif %}
 <div class="container">
     <h3>Login</h3>
+
     <form method="post" action="{% url 'cisystem:user_login' %}">
         {% csrf_token %}
         {{ form.as_p }}
         {# A more "HTML" way of creating the login form#}
+        <div>
+            <label>
+                Birth:
+                <input type="radio" name="type" value="birth">
+            </label>
+            <label>
+                Death:
+                <input type="radio" name="type" value="death">
+            </label>
+        </div>
         <div  class="form-group">
             <label for="username">Username:</label>
             <input type="text" name="username" class="form-control" placeholder="Username" required>

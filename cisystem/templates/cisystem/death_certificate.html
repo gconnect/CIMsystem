@@ -18,7 +18,7 @@
 
         </div>
         <div class="col-sm-2">
-            <p class="reg-id">{{obj.certificate_number}}</p>
+            <p class="reg-id">{{death_obj.certificate_number}}</p>
 
         </div>
     </div>
@@ -29,7 +29,7 @@
             <label class="left">Registration Center</label>
         </div>
         <div class="col-sm-8">
-            <p class="left">{{obj.registration_center}}</p>
+            <p class="left">{{death_obj.registration_center}}</p>
             <hr class="line" size="6" width="100%" color="black">
         </div>
     </div>
@@ -39,7 +39,7 @@
             <label class="left">Town/Village</label>
         </div>
         <div class="col-sm-8">
-            <p class="left">{{obj.town_or_village_of_registration}}</p>
+            <p class="left">{{death_obj.town_or_village_of_registration}}</p>
             <hr class="line" size="6" width="100%" color="black">
         </div>
     </div>
@@ -48,7 +48,7 @@
             <label class="left">L.G.A</label>
         </div>
         <div class="col-sm-8">
-            <p class="left">{{obj.LGA_of_registration}}</p>
+            <p class="left">{{death_obj.LGA_of_registration}}</p>
             <hr class="line" size="6" width="100%" color="black">
         </div>
     </div>
@@ -57,16 +57,16 @@
             <label class="left">State</label>
         </div>
         <div class="col-sm-4">
-            <p class="left">{{obj.state_of_registration}}</p>
+            <p class="left">{{death_obj.state_of_registration}}</p>
             <hr class="line" size="6" width="100%" color="black">
         </div>
         <div class="col-sm-2">
-            <p class="right">{{obj.registered_date.year}}</p>
+            <p class="right">{{death_obj.registered_date.year}}</p>
             <hr class="line" size="6" width="50%" color="black">
             <p class="right">Year</p>
         </div>
         <div class="col-sm-2">
-            <p class="right">{{obj.entry_no}}</p>
+            <p class="right">{{death_obj.entry_no}}</p>
             <hr class="line2" size="6" width="50%" color="black">
             <p class="right">Entry No.</p>
         </div>
@@ -75,17 +75,17 @@
         on</h5>
     <div class="row">
         <div class="col-sm-2 top ">
-            <p class="right">{{obj.registered_date.day}}</p>
+            <p class="right">{{death_obj.registered_date.day}}</p>
             <hr class="line" size="6" width="50%" color="black">
             <p class="right">Day</p>
         </div>
         <div class="col-sm-2 top">
-            <p class="right">{{obj.registered_date.month}}</p>
+            <p class="right">{{death_obj.registered_date.month}}</p>
             <hr class="line" size="6" width="50%" color="black">
             <p class="right">Month</p>
         </div>
         <div class="col-sm-2 top">
-            <p class="right">{{obj.registered_date.year}}</p>
+            <p class="right">{{death_obj.registered_date.year}}</p>
             <hr class="line2" size="6" width="50%" color="black">
             <p class="right">Year</p>
         </div>
@@ -99,7 +99,7 @@
             <p>1. Full Name</p>
         </div>
         <div class="col-sm-10 top">
-            <p class="left2">{{obj.surname_of_deceased}} {{obj.other_name_of_deceased}}</p>
+            <p class="left2">{{death_obj.surname_of_deceased}} {{death_obj.other_name_of_deceased}}</p>
             <hr size="6" width="100%" color="black">
             <label class="right">(Surname first)</label>
             <label class="right">(in block letters)</label>
@@ -111,24 +111,24 @@
             <p>2. Sex </p>
         </div>
         <div class="col-sm-2 top ">
-            <p class="left2">{{obj.sex}}</p>
+            <p class="left2">{{death_obj.sex}}</p>
             <hr class="line" size="6" width="50%" color="black">
         </div>
         <div class="col-sm-2 top">
             <p>3. Date of Death: </p>
         </div>
         <div class="col-sm-2 top">
-            <p class="left2">{{obj.date_of_death.day}}</p>
+            <p class="left2">{{death_obj.date_of_death.day}}</p>
             <hr class="line2" size="6" width="50%" color="black">
             <p>Day</p>
         </div>
         <div class="col-sm-2 top">
-            <p class="left2">{{obj.date_of_death.month}}</p>
+            <p class="left2">{{death_obj.date_of_death.month}}</p>
             <hr class="line2" size="6" width="50%" color="black">
             <p>Month</p>
         </div>
         <div class="col-sm-2 top">
-            <p class="left2">{{obj.date_of_death.year}}</p>
+            <p class="left2">{{death_obj.date_of_death.year}}</p>
             <hr class="line2" size="6" width="50%" color="black">
             <p>Year</p>
         </div>
@@ -138,7 +138,7 @@
             <p>4. Age at Death:</p>
         </div>
         <div class="col-sm-8 top">
-            <p class="left2">{{obj.age_at_death}}</p>
+            <p class="left2">{{death_obj.age_at_death}}</p>
             <hr size="6" width="100%" color="black">
         </div>
     </div>
@@ -147,7 +147,7 @@
             <p>5. Place of Death:</p>
         </div>
         <div class="col-sm-8 top">
-            <p class="left2">{{obj.place_of_death}}</p>
+            <p class="left2">{{death_obj.place_of_death}}</p>
             <hr size="6" width="100%" color="black">
         </div>
     </div>
@@ -155,7 +155,7 @@
     <div class="row">
         <div class="col-sm-12 top ">
             <p>6. Full Address of usual Place of Residence of Deceased:</p>
-            <p class="left2">{{obj.residence_of_deceased}}</p>
+            <p class="left2">{{death_obj.residence_of_deceased}}</p>
             <hr size="6" width="100%" color="black">
         </div>
     </div>
@@ -165,11 +165,11 @@
             <p>Place of Issue:</p>
         </div>
         <div class="col-sm-4 top">
-            <p class="left2">{{obj.place_of_issue}}</p>
+            <p class="left2">{{death_obj.place_of_issue}}</p>
             <hr size="6" width="100%" color="black">
         </div>
         <div class="col-sm-4 top">
-            <p class="left2">{{obj.name_of_registrar}}</p>
+            <p class="left2">{{death_obj.name_of_registrar}}</p>
             <hr size="6" width="100%" color="black">
             <p class="left2">Name of Registrar</p>
         </div>
@@ -180,7 +180,7 @@
             <p>Date:</p>
         </div>
         <div class="col-sm-4 top">
-            <p class="left2">{{obj.registered_date}}</p>
+            <p class="left2">{{death_obj.registered_date}}</p>
             <hr size="6" width="100%" color="black">
         </div>
         <div class="col-sm-4">

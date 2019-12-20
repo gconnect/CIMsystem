@@ -8,21 +8,23 @@
 <table class="table">
   <thead class="table-header">
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">Entry no</th>
       <th scope="col">Surname</th>
       <th scope="col">Other name</th>
       <th scope="col">Age</th>
       <th scope="col">Date of Birth</th>
+      <th scope="col">isDead</th>
     </tr>
   </thead>
   <tbody>
       {% for eligible in eligible_list %}
     <tr>
-      <th scope="row">{{eligible.id}}</th>
+      <th scope="row">{{eligible.entry_no}}</th>
       <td>{{eligible.surname_of_child}}</td>
       <td>{{eligible.other_name_of_child}}</td>
       <td>{{eligible.child_age}}</td>
       <td>{{eligible.date_of_birth}}</td>
+      <td>{{eligible.is_dead}}</td>
     </tr>
   </tbody>
     {% endfor %}
